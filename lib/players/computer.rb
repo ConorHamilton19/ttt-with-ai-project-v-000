@@ -60,9 +60,9 @@ class Players
       end 
       elsif self.token == "X"
        lose_combo = WIN_COMBINATIONS.detect do |c|
-      (@board.cells[c[0]] != "O" && @board.cells[c[1]] == "O" && @board.cells[c[2]] = " ") ||
-      (@board.cells[c[0]] != "O" && @board.cells[c[2]] == "O" && @board.cells[c[1]] == " ") ||
-      (@board.cells[c[1]] != "O" && @board.cells[c[2]] == "O" && @board.cells[c[0]] == " ")
+      (@board.cells[c[0]] != "O" && @board.cells[c[1]] != "O" && @board.cells[c[2]] = " ") ||
+      (@board.cells[c[0]] != "O" && @board.cells[c[2]] != "O" && @board.cells[c[1]] == " ") ||
+      (@board.cells[c[1]] != "O" && @board.cells[c[2]] != "O" && @board.cells[c[0]] == " ")
       end 
       end
       if lose_combo != nil 
