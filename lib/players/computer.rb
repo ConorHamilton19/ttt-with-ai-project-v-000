@@ -36,7 +36,7 @@ class Players
     # Iterate through the WIN_COMBINATIONS to find where two of the three spots are taken by the same token as the player.
     def can_i_win?
       win_combo = WIN_COMBINATIONS.detect do |c|
-      (@board.cells[c[0]] != self.token && @board.cells[c[1]] != self.token && @board.cells[c[2]] == " ") ||
+      (@board.cells[c[0]] == self.token && @board.cells[c[1]] != self.token && @board.cells[c[2]] == " ") ||
       (@board.cells[c[0]] != self.token&& @board.cells[c[2]] != self.token && @board.cells[c[1]] == " ") ||
       (@board.cells[c[1]] != self.token && @board.cells[c[2]] != self.token && @board.cells[c[0]] == " ")
       end 
