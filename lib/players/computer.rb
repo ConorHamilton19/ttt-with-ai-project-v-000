@@ -20,6 +20,8 @@ class Players
       @board = board
       if can_i_win? != nil
        can_i_win?
+      elsif can_i_lose? != nil
+        can_i_lose?
       elsif center? != nil
         center?
       elsif corner? != nil
@@ -49,6 +51,26 @@ class Players
     
      # Iterate through the WIN_COMBINATIONS to find where two of the three spots are taken by the opposite token as the player.
     
+    def can_i_lose?
+      lose_combo = WIN_COMBINATIONS.detect do |c|
+      (@board.cells[c[0]] == "X" && @board.cells[c[1]] == "X" && @board.cells[c[2]] == " ") ||
+      (@board.cells[c[0]] == "X" && @board.cells[c[2]] == "X" && @board.cells[c[1]] == " ") ||
+      (@board.cells[c[1]] == "X" && @board.cells[c[2]] == "X" && @board.cells[c[0]] == " ")
+      end 
+      elsif self.token == "X"
+       lose_combo = WIN_COMBINATIONS.detect do |c|
+      (@board.cells[c[0]] == "O" && @board.cells[c[1]] == "O" && @board.cells[c[2]] == " ") ||
+      (@board.cells[c[0]] == "O" && @board.cells[c[2]] == "O" && @board.cells[c[1]] == " ") ||
+      (@board.cells[c[1]] == "O" && @board.cells[c[2]] == "O" && @board.cells[c[0]] == " ")
+      end 
+      end
+      if lose_combo != nil 
+        block_move = lose_combo.detect{|a| @board.cells[a] == " "}
+          (block_move + 1).to_s
+      else 
+        nil
+      end
+    end 
     
     #If nobody will win on next move take the center
     
